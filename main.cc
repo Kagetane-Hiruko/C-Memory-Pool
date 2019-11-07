@@ -1,4 +1,4 @@
-#include "lib/mempool.h"
+#include "source/mempool.h"
 #include <stdio.h>
 
 int main(int argc, const char ** argv)

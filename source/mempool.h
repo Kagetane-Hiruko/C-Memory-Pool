@@ -1,18 +1,27 @@
-#ifdef _WIN32
+#ifndef KAGETANE_HIRUKO_MEMORY_POOL
+#define KAGETANE_HIRUKO_MEMORY_POOL
 
-	#ifdef BUILD_MODE
+#ifndef KAGETANE_HIRUKO_API
+	#ifdef _WIN32
 
-		#define KAGETANE_HIRUKO_API __declspec(dllexport)
+		#ifdef BUILD_MODE
 
-	#else
+			#define KAGETANE_HIRUKO_API __declspec(dllexport)
 
-		#define KAGETANE_HIRUKO_API __declspec(dllimport)
+		#else
+
+			#define KAGETANE_HIRUKO_API __declspec(dllimport)
+
+		#endif
 
 	#endif
+
 
 #endif
 
 #define dref(pointer) (*pointer)
+
+
 
 /**
 
@@ -118,3 +127,5 @@ extern "C" void * KAGETANE_HIRUKO_API allocate_memory_pool (memory_pool_t * memo
 
 **/
 extern "C" void KAGETANE_HIRUKO_API deallocate_memory_pool (memory_pool_t * memory_pool, void * memory_address);
+
+#endif
