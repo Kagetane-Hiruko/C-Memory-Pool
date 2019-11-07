@@ -2,6 +2,17 @@
 #define KAGETANE_HIRUKO_MEMORY_POOL
 
 #ifndef KAGETANE_HIRUKO_API
+
+	#ifdef __cplusplus
+		
+		#define EXTERN_C extern "C"
+	
+	#else
+
+		#define EXTERN_C
+
+	#endif
+	
 	#ifdef _WIN32
 
 		#ifdef BUILD_MODE
@@ -92,7 +103,7 @@ typedef struct
 	This function creates new memory pool.
 
 **/
-extern "C" memory_pool_t * KAGETANE_HIRUKO_API create_memory_pool  (unsigned int type, unsigned int number_of_blocks);
+EXTERN_C memory_pool_t * KAGETANE_HIRUKO_API create_memory_pool  (unsigned int type, unsigned int number_of_blocks);
 
 /**
 
@@ -103,7 +114,7 @@ extern "C" memory_pool_t * KAGETANE_HIRUKO_API create_memory_pool  (unsigned int
 	This function will delete given memory pool if it exists.
 
 **/
-extern "C" void   KAGETANE_HIRUKO_API delete_memory_pool  (memory_pool_t * memory_pool);
+EXTERN_C void   KAGETANE_HIRUKO_API delete_memory_pool  (memory_pool_t * memory_pool);
 
 /**
 
@@ -115,7 +126,7 @@ extern "C" void   KAGETANE_HIRUKO_API delete_memory_pool  (memory_pool_t * memor
 	are 0 free memory blocks it will return NULL.
 
 **/
-extern "C" void * KAGETANE_HIRUKO_API allocate_memory_pool (memory_pool_t * memory_pool);
+EXTERN_C void * KAGETANE_HIRUKO_API allocate_memory_pool (memory_pool_t * memory_pool);
 
 /**
 	
@@ -126,6 +137,6 @@ extern "C" void * KAGETANE_HIRUKO_API allocate_memory_pool (memory_pool_t * memo
 	This function will deallocate given memory block from memory pool if it exeists there.
 
 **/
-extern "C" void KAGETANE_HIRUKO_API deallocate_memory_pool (memory_pool_t * memory_pool, void * memory_address);
+EXTERN_C void KAGETANE_HIRUKO_API deallocate_memory_pool (memory_pool_t * memory_pool, void * memory_address);
 
 #endif
